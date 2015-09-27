@@ -3,12 +3,12 @@
 
 makeCacheMatrix <- function(x = matrix()) {
  	inv <- NULL
- 	set <- function(y=matrix()) {
+ 	set <- function(y) {
 	        x <<- y           ## (re)assign x in parent env so "get" fn will return the correct (updated) matrix.
 	        inv <<- NULL      ## (re)assign inv in parent env so the inverse will be recalculated if the matrix changes.
 	}
 	get <- function() x          			    ## returns matrix x (found in the parent environment)
-	setinverse <- function(inverse)  inv << inverse     ## assign inverse (found in parent environment) to cache
+	setinverse <- function(inverse)  inv <<- inverse     ## assign inverse (found in parent environment) to cache
 	getinverse <- function() inv     		    ## returns the inverse of matrix x (found in parent environment)
 	list(set=set,get=get,setinverse=setinverse,getinverse=getinverse)
 
